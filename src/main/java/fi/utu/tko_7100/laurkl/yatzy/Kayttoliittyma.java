@@ -1,7 +1,15 @@
 package fi.utu.tko_7100.laurkl.yatzy;
 
+/**
+ * Tulostaa kahden pelaajan pistekortin rinnakkain.
+ */
 public class Kayttoliittyma {
 
+    /**
+     * Tulostaa kahden pelaajan pistekortin rinnakkain.
+     * @param oma Käyttäjän pistekortti.
+     * @param vastustaja Vastustajan pistekortti.
+     */
     public void tulostaPistekortitRinnakkain (Pistekortti oma, Pistekortti vastustaja) {
 
         String[] kategoriat = {

@@ -5,11 +5,27 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+/**
+ * Tallentaa ja tulostaa pelin parhaiden pisteiden tulokset.
+ */
 public class HighScore {
 
+    /**
+     * Tiedoston nimi, johon tallennetaan high score tulokset.
+     */
     private static final String TIEDOSTO = "highscore.json";
+
+    /**
+     * Jackson-kirjaston olio JSON-tiedoston lukemiseen ja kirjoittamiseen.
+     */
     private ObjectMapper mapper =  new ObjectMapper();
 
+    /**
+     * Tallentaa parametrina annetut tiedot tiedostoon.
+     * @param nimi Pelaajan nimi.
+     * @param pisteet Pelaajan pisteet.
+     */
     public void tallennaTulos (String nimi, int pisteet) {
 
         ArrayList<Tulos> tulokset = lataaTulokset();
@@ -23,6 +39,10 @@ public class HighScore {
         }
     }
 
+    /**
+     * Lataa tallennetut tulokset tiedostosta.
+     * @return Lista tallennetuista tuloksista, tai tyhjä jos tiedostoa ei ole.
+     */
     public ArrayList<Tulos> lataaTulokset() {
         File tiedosto = new File (TIEDOSTO);
 
@@ -40,6 +60,9 @@ public class HighScore {
     }
 
 
+    /**
+     * Tulostaa kolme suurinta pistemäärää pelatuista peleistä.
+     */
     public void tulostaTop3() {
 
         ArrayList<Tulos> tulokset = lataaTulokset();

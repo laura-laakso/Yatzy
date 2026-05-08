@@ -2,15 +2,44 @@ package fi.utu.tko_7100.laurkl.yatzy;
 
 import java.util.Scanner;
 
+/**
+ * Hoitaa pelin kulun.
+ * Luo ihmisPelaaja ja tekoalyPelaaja oliot.
+ * Tulostaa highScore tulokset, pistekortit ja lopputuloksen.
+ */
+
 public class Yatzy {
 
     //Atribuutit
 
+    /**
+     * Lukee käyttäjän syötteen.
+     */
     private Scanner lukija = new Scanner (System.in);
+
+    /**
+     * Ihmispelaaja.
+     */
     private Pelaaja ihmisPelaaja;
+
+    /**
+     * tekoäly vastustaja.
+     */
     private Pelaaja tekoalyPelaaja;
+
+    /**
+     * ihmispelaajan ja tekoalyvastustajan pistekortti.
+     */
     private Kayttoliittyma kortti;
+
+    /**
+     * Kertoo onko peli käynnissä.
+     */
     private boolean peliKaynnissa;
+
+    /**
+     * HighScore-olio pelitulosten käsittelyä varten.
+     */
     private HighScore highScore;
 
     //Värit
@@ -21,6 +50,9 @@ public class Yatzy {
 
     //Konstruktori
 
+    /**
+     * Luo attribuutteina olevat oliot.
+     */
     public Yatzy() {
         this.ihmisPelaaja = new IhmisPelaaja();
         this.tekoalyPelaaja = new TekoalyPelaaja();
@@ -31,9 +63,14 @@ public class Yatzy {
 
     //Metodit
 
-    public void Pelaa() {
+    /**
+     * Käynnistää pelin.
+     * Laskee kierrokset.
+     * Ohjaa kumman pelaajan vuoro on.
+     */
+    public void pelaa() {
 
-        TervetuloaViesti();
+        tervetuloaViesti();
         highScore.tulostaTop3();
 
         odotaEnter("\nPaina Enter aloittaaksesi pelin...");
@@ -68,24 +105,38 @@ public class Yatzy {
         naytaLopputulos();
     }
 
+    /**
+     * Tyhjentää komentorivin.
+     */
     private void tyhjennaRuutu() {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
     }
 
+    /**
+     * Ohjaa käyttäjää painamaan enter jatkaakseensa.
+     * @param viesti ohje käyttäjälle.
+     */
     private void odotaEnter (String viesti) {
         System.out.println (keltainen(viesti));
         lukija.nextLine();
     }
 
 
-    private void TervetuloaViesti() {
+    /**
+     * Tulostaa pelin otsikon.
+     */
+    private void tervetuloaViesti() {
         System.out.println (keltainen("=================================\n"
                         +   "============= YATZY =============\n"
                         +   "=================================\n"));
     }
 
+    /**
+     * Tulostaa kuka voitti pelin.
+     * Tallentaa HighScore-olioon tulokset.
+     */
     private void naytaLopputulos() {
         System.out.println (keltainen("\n========== PELI PÄÄTTYI =========\n"));
 
@@ -120,6 +171,11 @@ public class Yatzy {
         return PUNAINEN + teksti + RESET;
     }
 
+    /**
+     * Muuttaa annaetun tekstin keltaiseksi.
+     * @param teksti väritettävä teksti
+     * @return teksti värjättynä keltaiseksi
+     */
     private String keltainen (String teksti) {
         return KELTAINEN + teksti + RESET;
     }

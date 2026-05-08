@@ -2,11 +2,31 @@ package fi.utu.tko_7100.laurkl.yatzy;
 
 import java.util.Scanner;
 
+/**
+ * Hoitaa ihmispelaajan pelivuoron.
+ * Laskee ihmispelaajan pisteet, ottaa vastaan käyttäjän syötteitä.
+ * Tulostaa käyttäjälle valinnat.
+ */
 public class IhmisPelaaja implements Pelaaja {
 
+    /**
+     * Ihmispelaajan pistekortti.
+     */
     private Pistekortti pistekortti;
+
+    /**
+     * Lukee käyttäjän syötteen.
+     */
     private Scanner lukija = new Scanner (System.in);
+
+    /**
+     * Noppien heittämiseen ja lukitsemiseen käytettävä logiikka.
+     */
     private NoppaLogiikka noppaLogiikka = new NoppaLogiikka();
+
+    /**
+     * Pisteiden laskemiseen käytettävä laskuri.
+     */
     private PisteLaskuri pisteLaskuri = new PisteLaskuri();
 
     //Värit
@@ -16,10 +36,18 @@ public class IhmisPelaaja implements Pelaaja {
     private static final String PUNAINEN = "\u001B[31m";
     private static final String KELTAINEN = "\u001B[33m";
 
+    /**
+     * Luo ihmispelaajan pistekortin.
+     */
     public IhmisPelaaja() {
         this.pistekortti = new Pistekortti();
     }
 
+    /**
+     * Tulostaa vuoron tilanteen, heitetyt nopat ja valinnat käyttäjälle.
+     * Käsittelee käyttäjän antaman valinnan.
+     * @return Palauttaa true jos peli jatkuu, false jos käyttäjä lopettaa pelin.
+     */
     @Override
     public boolean pelaaVuoro() {
 
@@ -83,23 +111,38 @@ public class IhmisPelaaja implements Pelaaja {
         return true;
     }
 
+
+    /**
+     * Palauttaa ihmispelaajan pistekortin.
+     * @return Palauttaa pistekortin.
+     */
     @Override
     public Pistekortti getPistekortti(){
         return pistekortti;
     }
 
+    /**
+     * Palauttaa ihmis pelaajan yhteispisteet.
+     * @return Palauttaa ihmis pelaajan yhteispisteet.
+     */
     @Override
     public int annaPisteet() {
         return pistekortti.laskeYhteispisteet();
 
     }
 
+    /**
+     * Heittää kaikki nopat ja tulostaa ne.
+     */
     private void heitaKaikkiNopat () {
 
         noppaLogiikka.heitaKaikkiNopat();
         tulostaNopat();
     }
 
+    /**
+     * Heittaa lukitsemattomat nopat ja tulostaa kaikki nopat.
+     */
     private void heitaLukitsemattomatNopat() {
 
         noppaLogiikka.heitaLukitsemattomatNopat();
@@ -217,6 +260,10 @@ public class IhmisPelaaja implements Pelaaja {
         return " ".repeat(vasen) + teksti + " ".repeat(oikea);
     }
 
+    /**
+     * Tulostaa vuoron tilanteen.
+     * @param heitot Määrä, joita heittoja on vielä jäljellä.
+     */
     private void tulostaVuoronTilanne (int heitot) {
 
         System.out.println ("Heittoja jäljellä: " + heitot + " / 3\n");
@@ -226,6 +273,9 @@ public class IhmisPelaaja implements Pelaaja {
     }
 
 
+    /**
+     * Tulostaa käyttäjän valinnat, jos heittoja on vielä jäljellä.
+     */
     private void tulostaNormaalitValinnat() {
         System.out.println ("1 - Heitä lukitsemattomat nopat uudelleen");
         System.out.println ("2 - Lukitse tai vapauta noppia");
@@ -234,6 +284,9 @@ public class IhmisPelaaja implements Pelaaja {
         System.out.println ("Anna valinta: ");
     }
 
+    /**
+     * Tulostaa käyttäjän valinnat, jos heittoja ei ole enää jäljellä.
+     */
     private void tulostaViimeinenValinta() {
         System.out.println ("Kaikki heitot on käytetty.");
         System.out.println ("3 - Kirjaa pisteet pistekorttiin ja lopeta vuoro");
@@ -241,6 +294,10 @@ public class IhmisPelaaja implements Pelaaja {
         System.out.println ("Anna valinta: ");
     }
 
+    /**
+     * Kysyy käyttäjältä valinnan
+     * @return palauttaa kokonaisluvun käyttäjän valinnasta.
+     */
     private int kysyValinta() {
 
         while (true) {
@@ -255,6 +312,10 @@ public class IhmisPelaaja implements Pelaaja {
         }
     }
 
+    /**
+     * Lukitsee tai vapauttaa käyttäjän antaman nopan.
+     * Tulostaa nopat.
+     */
     private void lukitseTaiVapautaNoppia() {
 
         System.out.println ("\nValitse noppien numerot (1-5), ei silmälukuja.\n");
@@ -288,6 +349,9 @@ public class IhmisPelaaja implements Pelaaja {
 
     }
 
+    /**
+     * Lisää käyttäjän valitsemaan kategoriaan saadut pisteet.
+     */
     private void kirjaaPisteetPistekorttiin () {
 
         System.out.println ("\nValitse kategoria:");
@@ -317,6 +381,11 @@ public class IhmisPelaaja implements Pelaaja {
 
     }
 
+    /**
+     * Palauttaa parametrina olevan arvon kohdalta kategorian nimi.
+     * @param i Taulukon arvo, jossa haluttu nimi on.
+     * @return Palauttaa kategorian nimen.
+     */
     private String kategoriaNimi (int i) {
         String[] kategoriat = {
                 "Ykköset", "Kakkoset", "Kolmoset", "Neloset", "Viitoset",
@@ -327,24 +396,40 @@ public class IhmisPelaaja implements Pelaaja {
         return kategoriat[i];
     }
 
+    /**
+     * Laskee halutulle kategorialle pisteet.
+     * @param kategoria se kategoria, jolle pisteet lasketaan.
+     * @return palauttaa pistemäärän halutulle kategorialle.
+     */
     private int laskePisteet (int kategoria) {
         return pisteLaskuri.laskePisteet(noppaLogiikka.getArvot(), kategoria);
 
-
     }
 
+    /**
+     * Lopettaa pelin.
+     */
     private void lopetaPeli() {
         System.out.println (punainen("\nPeli lopetettu.\n"));
 
     }
 
+    /**
+     * Muuttaa annetun tekstin vihreäksi.
+     * @param teksti väritettävä teksti.
+     * @return teksti värjättynä vihreäksi.
+     */
     private String vihrea (String teksti) {
         return VIHREA + teksti + RESET;
     }
 
+    /**
+     * Muuttaa annaetun tekstin punaiseksi.
+     * @param teksti väritettävä teksti.
+     * @return teksti värjättynä punaiseksi.
+     */
     private String punainen (String teksti) {
         return PUNAINEN + teksti + RESET;
     }
-
 
 }

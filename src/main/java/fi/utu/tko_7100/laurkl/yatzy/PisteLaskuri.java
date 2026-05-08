@@ -1,7 +1,16 @@
 package fi.utu.tko_7100.laurkl.yatzy;
 
+/**
+ * Laskee pisteet kategorioille.
+ */
 public class PisteLaskuri {
 
+    /**
+     * Laskee pisteet annetulle kategorialle noppien silmälukujen perusteella..
+     * @param nopat Pelaajan noppien silmäluvut.
+     * @param kategoria Kategorian numero, joka määrää miten pisteet lasketaan.
+     * @return Kategoriasta saadut pisteet.
+     */
     public int laskePisteet (int[] nopat, int kategoria) {
         int [] lkm = laskeLukumaarat(nopat);
 
@@ -119,6 +128,11 @@ public class PisteLaskuri {
 
     }
 
+    /**
+     * Laskee silmälukujen esiintymisen määrät.
+     * @param nopat Taulukko noppien silmäluvuista.
+     * @return Palauttaa taulukon silmälukujen määristä.
+     */
     private int[] laskeLukumaarat(int[] nopat) {
 
         int [] lkm = new int [7];
@@ -130,6 +144,11 @@ public class PisteLaskuri {
         return lkm;
     }
 
+    /**
+     * Laskee noppien silmälukujen summan.
+     * @param nopat Taulukko noppien silmäluvuista.
+     * @return Noppien silmälukujen summa.
+     */
     private int summa(int[] nopat) {
         int summa = 0;
         for (int noppa : nopat) {
