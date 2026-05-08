@@ -2,6 +2,7 @@ package fi.utu.tko_7100.laurkl.yatzy;
 
 /**
  * Tulostaa kahden pelaajan pistekortin rinnakkain.
+ * Tulostaa nopat ascii kuvina.
  */
 public class Kayttoliittyma {
 

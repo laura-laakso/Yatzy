@@ -22,7 +22,7 @@ public class IhmisPelaaja implements Pelaaja {
     /**
      * Lukee käyttäjän syötteen.
      */
-    private Scanner lukija = new Scanner (System.in);
+    private Scanner lukija;
 
     /**
      * Noppien heittämiseen ja lukitsemiseen käytettävä logiikka.
@@ -44,8 +44,9 @@ public class IhmisPelaaja implements Pelaaja {
     /**
      * Luo ihmispelaajan pistekortin.
      */
-    public IhmisPelaaja() {
+    public IhmisPelaaja(Scanner lukija) {
         this.pistekortti = new Pistekortti();
+        this.lukija = lukija;
     }
 
     /**
@@ -201,7 +202,11 @@ public class IhmisPelaaja implements Pelaaja {
     private int kysyValinta() {
 
         while (true) {
-            String syote = lukija.nextLine();
+            String syote = lukija.nextLine().trim();
+
+            if (syote.isEmpty()) {
+                continue;
+            }
 
             try {
                 return Integer.parseInt(syote);

@@ -54,7 +54,7 @@ public class Yatzy {
      * Luo attribuutteina olevat oliot.
      */
     public Yatzy() {
-        this.ihmisPelaaja = new IhmisPelaaja();
+        this.ihmisPelaaja = new IhmisPelaaja(lukija);
         this.tekoalyPelaaja = new TekoalyPelaaja();
         this.kortti = new Kayttoliittyma();
         this.peliKaynnissa = true;
@@ -95,6 +95,7 @@ public class Yatzy {
 
             tekoalyPelaaja.pelaaVuoro();
 
+            odotaEnter("\nPaina Enter nähdäksesi pistekortit...");
             kortti.tulostaPistekortitRinnakkain(ihmisPelaaja.getPistekortti(), tekoalyPelaaja.getPistekortti());
 
             odotaEnter("\nPaina enter jatkaaksesi seuraavaan kierrokseen...");
