@@ -29,37 +29,6 @@ Peli käynnistyy ja näyttää tervetuloviestin sekä high score -listan.
 
 ![Aloitusruutu](kuvat/Aloitusruutu.png)
 
-Tämän jälkeen käyttäjä voi aloittaa pelin painamalla Enter-näppäintä.# Yatzy
-#### Laura Laakso, laurkl@utu.fi, TKO_7100
-#### Löytyy osoitteesta <https://gitlab.utu.fi/dfte/tko7100-3004/laura_laakso_2026/yatzy-harjoitustyo>
-
-## Pelin kuvaus
-Komentoriviltä pelattava yatzy peli, jossa käyttäjä pelaa tekoälypelaajaa vastaan.
-Pelaaja voi vuorollaan heittää noppia uudelleen sekä lukita ja vapauttaa haluamiaan
-noppia tavoitellakseen mahdollisimman hyviä pisteitä eri kategorioissa.
-Pelissä on toteutettu tekoälyvastustaja, joka pyrkii saamaan mahdollisimman suuren
-pistemäärän valitsemalla nopilleen parhaan mahdollisen kategorian.
-Peli sisältää myös high score ominaisuuden, joka tallentaa pelien parhaat tulokset
-JSON-tiedostoon ja näyttää käyttöliittymässä listan top 3 parhaimmista tuloksista.
-
-## Yatzyn säännöt
-Tarkemmat yatzyn säännöt löytyvät [Lautapeliopas sivulta](https://www.lautapeliopas.fi/saannot/yatzy/).
-
-## Käyttöohje
-
-### 1. Pelin käynnistäminen
-Projektissa käytetään Mavenia, joka hoitaa automaattisesti tarvittavien kirjastojen lataamisen, ohjelman kääntämisen sekä ohjelman paketoinnin.
-
-Lataa projekti GitLabista ja siirry terminaalissa projektikansioon komennolla: `cd Yatzy`
-
-Käännä ja paketoi ohjelma komennolla: `mvn package`
-
-Tämän jälkeen käynnistä peli komennolla: `java -jar target/Yatzy-1.0-SNAPSHOT.jar`
-
-Peli käynnistyy ja näyttää tervetuloviestin sekä high score -listan.
-
-![Aloitusruutu](kuvat/Aloitusruutu.png)
-
 Tämän jälkeen käyttäjä voi aloittaa pelin painamalla Enter-näppäintä.
 
 ### 2. Vuoron pelaaminen
