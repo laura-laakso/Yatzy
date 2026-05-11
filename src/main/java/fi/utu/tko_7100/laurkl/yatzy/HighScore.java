@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 /**
  * Tallentaa ja tulostaa pelin parhaiden pisteiden tulokset.
+ * Jackson-kirjaston käytössä hyödynnetty tekoälyä ja dokumentaatiota.
  */
 public class HighScore {
 
